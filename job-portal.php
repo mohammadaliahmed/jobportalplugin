@@ -38,11 +38,11 @@ function my_plugin_create_table()
     // Table creation SQL
     $sql = "CREATE TABLE $table_name (
             id mediumint(9) NOT NULL AUTO_INCREMENT,
-            title varchar(200)   UNIQUE,
-            agency varchar(200)   UNIQUE,
+            title varchar(200)   NULL,
+            agency varchar(200)  NULL,
             department varchar(200)  NULL,
             location varchar(200)  NULL,
-            jobUrl varchar(200)  NULL,
+            jobUrl varchar(200)  UNIQUE,
             subagency varchar(200)  NULL,
             PRIMARY KEY (id)
         ) $charset_collate;";
@@ -91,7 +91,6 @@ function job_portal_page()
                 echo '<div class="notice notice-success"><p>File uploaded and processed successfully!</p></div>';
                 // Echo the data line by line
                 foreach ($data as $item) {
-                    echo $item['jobTitle'] . ' - ' . $item['department'] . '<br>';
                     $data = array(
                         'title' => $item['jobTitle'],
                         'agency' => $item['agency'],
