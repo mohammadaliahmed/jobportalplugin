@@ -1,0 +1,51 @@
+let people = [
+
+];
+let jobs = document.getElementsByClassName("usajobs-search-result--core")
+for (let i = 0; i < 25; i++) {
+    let jobTitle = ""
+    let agency = ""
+
+    let department = ""
+    let location = ""
+    let jobUrl = ""
+    let subagency = ""
+
+    try {
+        jobTitle = jobs[i].querySelector('.usajobs-search-result--core__title').textContent.trim();
+    } catch (err) {
+
+    }
+     try {
+        agency = jobs[i].querySelector('.usajobs-search-result--core__agency').textContent.trim();
+    } catch (err) {
+
+    }
+    try {
+        department = jobs[i].querySelector('.usajobs-search-result--core__department').textContent.trim();
+    } catch (err) {
+
+    }
+    try {
+        location = jobs[i].querySelector('.usajobs-search-result--core__location').textContent.trim().split("\n")[0];
+    } catch (err) {
+
+    }
+    try {
+        jobUrl = jobs[i].querySelector('.usajobs-search-result--core__title').getAttribute('href');
+    } catch (err) {
+
+    }
+    try {
+        subagency = jobs[i].querySelector('.usajobs-search-result--core__subagency').textContent.trim();
+    } catch (err) {
+
+    }
+    let newPerson = { jobTitle: jobTitle,agency:agency, department: department, location: location, jobUrl: jobUrl, subagency: subagency };
+
+    people.push(newPerson);
+
+
+}
+
+console.log(people);
